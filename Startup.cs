@@ -18,7 +18,7 @@ namespace CommanderGQL
 
         public void ConfigureServices(IServiceCollection services)
         {
-            Configuration
+            //Configuration
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
