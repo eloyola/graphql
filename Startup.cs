@@ -18,6 +18,7 @@ namespace CommanderGQL
 
         public void ConfigureServices(IServiceCollection services)
         {
+            
             //Configuration
         }
 
