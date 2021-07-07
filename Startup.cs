@@ -1,15 +1,14 @@
 namespace CommanderGQL
 {
-    using CommanderGQL.Models;
+    using CommanderGQL.Data;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using Microsoft.EntityFrameworkCore;
-    using CommanderGQL.Data;
-    using CommanderGQL.GraphQL;
+    using GraphQL.Server.Ui.Voyager;
+    using CommanderGQL.Types;
 
     public class Startup
     {
@@ -22,10 +21,11 @@ namespace CommanderGQL
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer((Configuration.GetConnectionString("CommandCnStr"))));
+            services.AddPooledDbContextFactory<AppDbContext>(opt => opt.UseSqlServer((Configuration.GetConnectionString("CommandCnStr"))));
             services
             .AddGraphQLServer()
-            .AddQueryType<Query>();
+            .AddQueryType<Query>()
+            .AddProjections();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -41,6 +41,10 @@ namespace CommanderGQL
             {
                 endpoints.MapGraphQL();
             });
+
+            app.UseGraphQLVoyager(new VoyagerOptions {
+                GraphQLEndPoint="/graphql"                
+            }, "/graphql-voyager");
         }
     }
 }

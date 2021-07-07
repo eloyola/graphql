@@ -3,10 +3,17 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="HotChocolate.AspNetCore" Version="11.3.1"/>
-    <PackageReference Include="HotChocolate.Data.EntityFramework" Version="11.3.1"/>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.7"/>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.7"/>
-    <PackageReference Include="GraphQL.Server.Ui.Voyager" Version="5.0.2"/>
+    <PackageReference Include="HotChocolate.AspNetCore" Version="11.3.1" />
+    <PackageReference Include="HotChocolate.Data.EntityFramework" Version="11.3.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.7" />
+    <PackageReference Include="GraphQL.Server.Ui.Voyager" Version="5.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="GraphQL.Server.Ui.Voyager" />
+    <None Remove="Types\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Types\" />
   </ItemGroup>
 </Project>
