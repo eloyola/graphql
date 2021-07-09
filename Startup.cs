@@ -25,13 +25,18 @@ namespace CommanderGQL
             services
             .AddGraphQLServer()
             .AddQueryType<Query>()
-            .AddProjections();
+            .AddType<PlatformType>()
+            .AddType<CommandType>()
+            .AddFiltering()
+            .AddSorting();
+            // .AddProjections();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
+
                 app.UseDeveloperExceptionPage();
             }
 
