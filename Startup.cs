@@ -26,10 +26,12 @@ namespace CommanderGQL
             .AddGraphQLServer()
             .AddQueryType<Query>()
             .AddMutationType<Mutation>()
+            .AddSubscriptionType<Subscription>()
             .AddType<PlatformType>()
             .AddType<CommandType>()
             .AddFiltering()
-            .AddSorting();
+            .AddSorting()
+            .AddInMemorySubscriptions();
             // .AddProjections();
         }
 
@@ -41,6 +43,7 @@ namespace CommanderGQL
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseWebSockets();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
