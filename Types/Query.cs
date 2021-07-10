@@ -20,14 +20,18 @@
         */
 
         [UseDbContext(typeof(AppDbContext))]
-        [UseProjection]
+        [UseFiltering]
+        [UseSorting]
+        //[UseProjection]
         public IQueryable<Platform> GetPlatform([ScopedService] AppDbContext context)
         {
             return context.Platforms;
         }
         
         [UseDbContext(typeof(AppDbContext))]
-        [UseProjection]
+        [UseFiltering]
+        [UseSorting]
+        // [UseProjection]
         public IQueryable<Command> GetCommands([ScopedService] AppDbContext context)
         {
             return context.Commands;
